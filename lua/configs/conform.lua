@@ -6,7 +6,7 @@ local options = {
     typescriptreact = {  "prettier" },
     javascript = {  "prettier" },
     typescript = {  "prettier" },
-    html = { "prettier" }
+    html = { "prettier" },
   },
 
   format_on_save = {

@@ -35,3 +35,17 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "tabnew" }, {
+  callback = function()
+    local bufs = {}
+
+    for _, bufnr in ipairs(vim.t.bufs) do
+      if vim.api.nvim_buf_get_option(bufnr, "modified") then
+        table.insert(bufs, bufnr)
+      end
+    end
+
+    vim.t.bufs = bufs
+  end,
+})
